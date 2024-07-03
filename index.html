@@ -9,10 +9,10 @@
 <body>
     <div id="app">
         Active el uso del proxy en la siguiente dirección: <a href="https://cors-anywhere.herokuapp.com">https://cors-anywhere.herokuapp.com</a>
-        <br><br><label for="api-key">API Key de VirusTotal:</label>
+        <br><br><br><label for="api-key">API Key de VirusTotal:</label>
         <input type="password" id="api-key" name="api-key"><br>
 
-        <label for="ioc-input">Introduce los IOCs:</label><br>
+        <label for="ioc-input">Introduce los IOCs:</label>
         <textarea id="ioc-input" name="ioc-input" rows="10" cols="50"></textarea><br>
 
         <div class="form-group" style="padding: 15px 15px 15px 0">
@@ -29,7 +29,10 @@
         <button onclick="procesarIOCs()">Consultar</button>
         <button onclick="clearIOCs()">Borrar lista de IOCs</button><br><br>
 
-        <label for="resultados">Resultados:</label><br>
+        <div id="progress-bar"><div></div></div>
+        <p id="result-count"></p>
+
+        <label for="resultados">Resultados:</label>
         <textarea id="resultados" name="resultados" rows="10" cols="50" readonly></textarea><br><br>
 
         <button onclick="copiarResultados()">Copiar Resultados</button>
@@ -38,5 +41,3 @@
     <script src="app.js"></script>
 </body>
 </html>
-
-
