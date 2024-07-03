@@ -7,10 +7,10 @@ body {
 }
 
 #app {
-    max-width: 800px;
+    max-width: 950px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #ebebeb;
+    background-color: hsl(0, 0%, 87%);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -40,10 +40,42 @@ button {
     color: white;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:last-of-type {
     background-color: #008CBA;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:last-of-type:hover {
+    background-color: #007bb5;
+}
+
+/* Estilos de la barra de progreso */
+#progress-bar {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+    display: none;
+}
+
+#progress-bar div {
+    height: 10px;
+    width: 0;
+    background-color: #45a049;
+    animation: progress 2s infinite;
+}
+
+@keyframes progress {
+    0% { width: 0; }
+    50% { width: 100%; }S
+    100% { width: 0; }
 }
 
 /* Estilos responsivos */
