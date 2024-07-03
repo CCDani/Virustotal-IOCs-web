@@ -50,6 +50,8 @@ async function procesarIOCs() {
     const texto = document.getElementById('ioc-input').value.trim();
     const apiKey = document.getElementById('api-key').value.trim();
     const modo = document.querySelector('input[name="modo"]:checked').value;
+    const progressBar = document.getElementById('progress-bar');
+    const resultCount = document.getElementById('result-count');
 
     if (!apiKey) {
         alert("Por favor, introduce la API Key de VirusTotal.");
@@ -65,6 +67,10 @@ async function procesarIOCs() {
     }
 
     let resultadosText = "";
+    let positivos = 0;
+
+    progressBar.style.display = 'block';
+    resultCount.textContent = '';
 
     for (const ioc of iocs) {
         const resultado = await consultarVirusTotal(ioc, apiKey);
@@ -73,11 +79,19 @@ async function procesarIOCs() {
             const detectedUrls = attributes.last_analysis_stats.malicious || 0;
             if (detectedUrls > 0) {
                 resultadosText += `IOC: ${ioc} - ${detectedUrls}\n`;
+                positivos++;
             }
         }
     }
 
+    progressBar.style.display = 'none';
     document.getElementById('resultados').value = resultadosText;
+
+    if (positivos > 0) {
+        resultCount.textContent = `Positivos ${positivos} de ${iocs.length}`;
+    } else {
+        resultCount.textContent = "No hay resultados en VirusTotal";
+    }
 }
 
 // Función para copiar resultados al portapapeles
@@ -92,4 +106,3 @@ function copiarResultados() {
 function clearIOCs() {
     document.getElementById('ioc-input').value = '';
 }
-
