@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de IOCs en VirusTotal</title>
+    <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+    <div id="app">
+        Active el uso del proxy en la siguiente dirección: <a href="https://cors-anywhere.herokuapp.com">https://cors-anywhere.herokuapp.com</a>
+        <br><br><label for="api-key">API Key de VirusTotal:</label>
+        <input type="password" id="api-key" name="api-key"><br>
+
+        <label for="ioc-input">Introduce los IOCs:</label><br>
+        <textarea id="ioc-input" name="ioc-input" rows="10" cols="50"></textarea><br>
+
+        <div class="form-group" style="padding: 15px 15px 15px 0">
+            <label style="display: block">
+                <input type="radio" id="modo-filtrado" name="modo" value="Filtrado" checked>
+                Modo filtrado (extraer hashes, URLs, dominios e IPs)
+            </label>
+            <label style="display: block">
+                <input type="radio" id="modo-completo" name="modo" value="Completo">
+                Un IOC por línea
+            </label>
+        </div>
+
+        <button onclick="procesarIOCs()">Consultar</button>
+        <button onclick="clearIOCs()">Borrar lista de IOCs</button><br><br>
+
+        <label for="resultados">Resultados:</label><br>
+        <textarea id="resultados" name="resultados" rows="10" cols="50" readonly></textarea><br><br>
+
+        <button onclick="copiarResultados()">Copiar Resultados</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
